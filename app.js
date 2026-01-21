@@ -306,7 +306,7 @@ function addChatBubble(role, text) {
 }
 
 /* ===========================
-   BACKEND PROXY chat
+   BACKEND PROXY chat - FIXED URL
    =========================== */
 async function sendAIMessage() {
   const input = document.getElementById('chatInput');
@@ -322,7 +322,8 @@ async function sendAIMessage() {
   const thinkingBubble = addChatBubble('ai', 'Thinking...');
 
   try {
-    const response = await fetch("/api/chat", {
+    // FIXED: Changed from port 5500 to 3001 (your backend server)
+    const response = await fetch("http://localhost:3001/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
